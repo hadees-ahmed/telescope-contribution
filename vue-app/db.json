@@ -1,0 +1,22 @@
+{
+  "assignments": [
+    {
+      "name": "Physics",
+      "complete": false,
+      "id": 1,
+      "tag": "red"
+    },
+    {
+      "name": "Chemistry",
+      "complete": false,
+      "id": 2,
+      "tag": "green"
+    },
+    {
+      "name": "Maths",
+      "complete": false,
+      "id": 3,
+      "tag": "blue"
+    }
+  ]
+}
