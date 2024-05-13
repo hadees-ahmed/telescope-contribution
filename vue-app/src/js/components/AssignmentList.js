@@ -11,10 +11,17 @@ export  default {
           </span>
         </h1>
 
-      <assignmnet-tags @change="currentTag = $event" :tags="this.assignments.map(a => a.tag)" :currentTag="currentTag"></assignmnet-tags>
+      <assignmnet-tags 
+          v-model:currentTag="currentTag" 
+          :tags="this.assignments.map(a => a.tag)" 
+      ></assignmnet-tags>
 
       <ul class="border border-gray-600 divide-y divide-gray-600 mt-3">
-            <assignment v-for="assignment in filteredAssignemnts" :key="assignment.id" :assignment="assignment"></assignment>
+            <assignment 
+                v-for="assignment in filteredAssignemnts" 
+                :key="assignment.id" 
+                :assignment="assignment"
+            ></assignment>
         </ul>
     </section>
     `,
