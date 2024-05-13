@@ -6,17 +6,30 @@ export default {
 
     template:
         `
-          <assigment-list v-if="filters.incompleteAssignments.length >0" :assignments="filters.incompleteAssignments" status="Inprogress"></assigment-list>
-          <assigment-list v-if="filters.completeAssignments.length >0" :assignments="filters.completeAssignments" status="Completed" ></assigment-list>
-          <create-assignment-form @add="add"></create-assignment-form>
-          
+          <section class="flex gap-8">
+          <assigment-list 
+              v-if="filters.incompleteAssignments.length >0" 
+              :assignments="filters.incompleteAssignments" 
+              status="Inprogress">
+            
+            <create-assignment-form @add="add"></create-assignment-form>
+            
+          </assigment-list>
+          <assigment-list
+              v-show="!hidden"
+              v-if="filters.completeAssignments.length >0" 
+              :assignments="filters.completeAssignments" 
+              status="Completed" :toggleable="true" @hide="hide"   
+          ></assigment-list>
+          </section>
         `,
     data() {
         return {
-            assignments: []
+            assignments: [],
+            hidden: false
         }
     },
-
+ 
     computed: {
         filters() {
             return {
@@ -45,6 +58,9 @@ export default {
                 complete: false,
                 id: this.assignments.length + 1
             })
+        },
+        hide(){
+            this.hidden = true;
         }
     }
 }
