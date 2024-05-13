@@ -14,9 +14,9 @@ export default {
     data() {
         return {
             assignments: [
-                {name: 'Physics', complete: false, id:1},
-                {name: 'Chemistry', complete: false, id:2},
-                {name: 'Maths', complete: false, id:3}
+                {name: 'Physics', complete: false, id:1, tag: 'red'},
+                {name: 'Chemistry', complete: false, id:2, tag: 'green'},
+                {name: 'Maths', complete: false, id:3, tag: 'blue'}
             ]
         }
     },
