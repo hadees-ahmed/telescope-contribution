@@ -69,6 +69,7 @@ new Vue({
 
     created() {
         window.addEventListener('keydown', this.keydownListener);
+        this.applyTheme(localStorage.getItem('darkTheme'));
     },
 
     destroyed() {
@@ -76,7 +77,6 @@ new Vue({
     },
 
     beforeMount() {
-        localStorage.getItem('darkTheme');
         this.applyTheme(localStorage.getItem('darkTheme'));
     },
 
@@ -111,10 +111,10 @@ new Vue({
 
             if (theme === null || theme === 'false') {
                 localStorage.setItem('darkTheme', JSON.stringify(true));
-                theme = true;
+                theme = 'true';
             } else {
                 localStorage.setItem('darkTheme', JSON.stringify(false));
-                theme = false;
+                theme = 'false';
             }
 
             this.applyTheme(theme);
@@ -127,7 +127,7 @@ new Vue({
         applyTheme(useDarkTheme) {
             const linkElement = document.getElementById('theme-stylesheet');
 
-            if (useDarkTheme) {
+            if (useDarkTheme === 'true') {
                 linkElement.href = '/vendor/telescope/app-dark.css';
             } else {
                 linkElement.href = '/vendor/telescope/app.css';

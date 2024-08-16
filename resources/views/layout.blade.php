@@ -14,8 +14,7 @@
     <!-- Style sheets-->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:300,400,500,600" rel="stylesheet" />
-    <link id="theme-stylesheet" href="{{ asset(mix($cssFile, 'vendor/telescope')) }}" rel="stylesheet" type="text/css">
-</head>
+    <link id="theme-stylesheet" href="{{ asset(mix($cssFile, 'vendor/telescope')) }}" rel="stylesheet" type="text/css"></head>
 <body>
 <div id="telescope" v-cloak>
     <alert :message="alert.message"
