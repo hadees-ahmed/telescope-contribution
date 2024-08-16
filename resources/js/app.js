@@ -51,6 +51,7 @@ new Vue({
     router,
 
     data() {
+
         return {
             alert: {
                 type: null,
@@ -72,6 +73,11 @@ new Vue({
 
     destroyed() {
         window.removeEventListener('keydown', this.keydownListener);
+    },
+
+    beforeMount() {
+        localStorage.getItem('darkTheme');
+        this.applyTheme(localStorage.getItem('darkTheme'));
     },
 
     methods: {
@@ -100,10 +106,32 @@ new Vue({
             axios.delete(Telescope.basePath + '/telescope-api/entries').then((response) => location.reload());
         },
 
+        toggleTheme() {
+            let theme = localStorage.getItem('darkTheme');
+
+            if (theme === null || theme === 'false') {
+                localStorage.setItem('darkTheme', JSON.stringify(true));
+                theme = true;
+            } else {
+                localStorage.setItem('darkTheme', JSON.stringify(false));
+                theme = false;
+            }
+
+            this.applyTheme(theme);
+        },
         keydownListener(event) {
             if (event.metaKey && event.key === 'k') {
                 this.clearEntries(false);
             }
         },
+        applyTheme(useDarkTheme) {
+            const linkElement = document.getElementById('theme-stylesheet');
+
+            if (useDarkTheme) {
+                linkElement.href = '/vendor/telescope/app-dark.css';
+            } else {
+                linkElement.href = '/vendor/telescope/app.css';
+            }
+        }
     },
 });
