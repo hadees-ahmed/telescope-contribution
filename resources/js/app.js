@@ -64,6 +64,7 @@ new Vue({
             autoLoadsNewEntries: localStorage.autoLoadsNewEntries === '1',
 
             recording: Telescope.recording,
+            darkMode: null
         };
     },
 
@@ -129,8 +130,10 @@ new Vue({
 
             if (useDarkTheme === 'true') {
                 linkElement.href = '/vendor/telescope/app-dark.css';
+                this.darkMode = false
             } else {
                 linkElement.href = '/vendor/telescope/app.css';
+                this.darkMode = true
             }
         }
     },
